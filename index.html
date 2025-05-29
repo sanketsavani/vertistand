@@ -1,9 +1,10 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>3D Cylinder Animation</title>
+  <title>vertistand</title>
   <style>
     body {
       background: #2c2c2c;
@@ -17,6 +18,7 @@
       height: 100vh;
       margin: 0;
     }
+
     .custom-cursor {
       width: 60px;
       height: 60px;
@@ -30,25 +32,28 @@
       z-index: 9999;
       transform: translate3d(0, 0, 0);
     }
-    .title {  
+
+    .title {
       font-weight: 300;
       text-align: center;
       letter-spacing: 10px;
       font-size: 18px;
       margin-bottom: 50px;
     }
+
     .title span {
-      background: radial-gradient(circle, #fff 30%, #c2c2c2 100%);
+      color: #f96815;
       background-clip: text;
       -webkit-background-clip: text;
-      color: transparent;
     }
+
     .holder {
       transform-style: preserve-3d;
       width: 80vw;
       height: 450px;
       perspective: 1000px;
     }
+
     .cylinder {
       position: relative;
       height: 100%;
@@ -56,11 +61,9 @@
       transform-style: preserve-3d;
       animation: spin 30s infinite linear;
     }
+
     .face {
-      background: radial-gradient(circle, #fff 30%, #c2c2c2 100%);
-      background-clip: text;
-      -webkit-background-clip: text;
-      color: transparent;
+      color: #f96815;
       font-size: 62px;
       letter-spacing: 4px;
       line-height: 50px;
@@ -73,6 +76,7 @@
       left: 50%;
       transform: rotateX(calc(18deg * var(--index))) translateZ(159px) translateX(-50%);
     }
+
     @keyframes spin {
       to {
         transform: rotateX(-360deg);
@@ -80,6 +84,7 @@
     }
   </style>
 </head>
+
 <body>
   <div class="custom-cursor"></div>
   <div class="title">
@@ -87,26 +92,26 @@
   </div>
   <div class="holder">
     <div class="cylinder">
-      <div class="face" style="--index: 0;">COMING SOON</div>
+      <!-- <div class="face" style="--index: 0;">COMING SOON</div> -->
       <div class="face" style="--index: 1;">COMING SOON</div>
-      <div class="face" style="--index: 2;">COMING SOON</div>
+      <!-- <div class="face" style="--index: 2;">COMING SOON</div> -->
       <div class="face" style="--index: 3;">COMING SOON</div>
-      <div class="face" style="--index: 4;">COMING SOON</div>
+      <!-- <div class="face" style="--index: 4;">COMING SOON</div> -->
       <div class="face" style="--index: 5;">COMING SOON</div>
-      <div class="face" style="--index: 6;">COMING SOON</div>
+      <!-- <div class="face" style="--index: 6;">COMING SOON</div> -->
       <div class="face" style="--index: 7;">COMING SOON</div>
-      <div class="face" style="--index: 8;">COMING SOON</div>
+      <!-- <div class="face" style="--index: 8;">COMING SOON</div> -->
       <div class="face" style="--index: 9;">COMING SOON</div>
-      <div class="face" style="--index: 10;">COMING SOON</div>
+      <!-- <div class="face" style="--index: 10;">COMING SOON</div> -->
       <div class="face" style="--index: 11;">COMING SOON</div>
-      <div class="face" style="--index: 12;">COMING SOON</div>
+      <!-- <div class="face" style="--index: 12;">COMING SOON</div> -->
       <div class="face" style="--index: 13;">COMING SOON</div>
-      <div class="face" style="--index: 14;">COMING SOON</div>
+      <!-- <div class="face" style="--index: 14;">COMING SOON</div> -->
       <div class="face" style="--index: 15;">COMING SOON</div>
-      <div class="face" style="--index: 16;">COMING SOON</div>
+      <!-- <div class="face" style="--index: 16;">COMING SOON</div> -->
       <div class="face" style="--index: 17;">COMING SOON</div>
-      <div class="face" style="--index: 18;">COMING SOON</div>
-      <div class="face" style="--index: 19;">COMING SOON</div>
+      <!-- <div class="face" style="--index: 18;">COMING SOON</div> -->
+      <div class="face" style="--index: 19;">VERTISTAND</div>
     </div>
   </div>
 
@@ -114,7 +119,7 @@
     const cursor = document.querySelector('.custom-cursor');
     const positionElement = (e) => {
       const mouseY = e.clientY;
-      const mouseX = e.clientX;   
+      const mouseX = e.clientX;
       cursor.style.transform = `translate3d(${mouseX - 30}px, ${mouseY - 30}px, 0)`;
     }
     window.addEventListener('mousemove', positionElement);
@@ -132,7 +137,7 @@
         isInteracting = true;
         barrel.style.animation = 'none';
       }
-      
+
       const barrelDimensions = updateBarrelDimensions();
       const cursorPos = {
         x: e.clientX - Math.round(barrelDimensions.left),
@@ -142,9 +147,9 @@
         y: 30 * ((cursorPos.y / barrelDimensions.height) * 2 - 1),
         x: 30 * ((cursorPos.x / barrelDimensions.width) * 2 - 1)
       };
-      
+
       barrel.style.transform = `rotateX(${-angle.y}deg) rotateY(${angle.x}deg)`;
-      
+
       cancelAnimationFrame(animationFrame);
       animationFrame = requestAnimationFrame(() => {
         isInteracting = false;
@@ -160,4 +165,5 @@
     window.addEventListener('resize', updateBarrelDimensions);
   </script>
 </body>
+
 </html>
